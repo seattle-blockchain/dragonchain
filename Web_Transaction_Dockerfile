@@ -1,6 +1,7 @@
 FROM centos:7
 ARG BLOCKCHAIN_DB_HOSTNAME
 
+RUN yum install -y openssl
 RUN yum install -y epel-release
 RUN yum -y install make automake gcc gcc-c++ kernel-devel
 RUN yum -y install python34
@@ -13,7 +14,11 @@ RUN pip install psycopg2
 RUN echo $PATH
 
 COPY ./blockchain .
-COPY ./pki .
+# COPY ./pki .
+RUN mkdir pki
+RUN mkdir blockchain
+RUN openssl ecparam -name secp384r1 -genkey -out /pki/sk.pem
+RUN openssl ec -in /pki/sk.pem -pubout -out /pki/pk.pem
 COPY ./requirements.txt .
 
 RUN pip install -r requirements.txt
