@@ -1,0 +1,19 @@
+version: '2'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Postgres_Database_Dockerfile
+  processor:
+    build:
+      context: .
+      dockerfile: Processor_Dockerfile
+  web_query:
+    build:
+      context: .
+      dockerfile: Web_Query_Dockerfile
+  web_transaction:
+    build:
+      context: .
+      dockerfile: Web_Transaction_Dockerfile
+
