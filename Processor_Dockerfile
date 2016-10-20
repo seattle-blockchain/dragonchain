@@ -59,11 +59,11 @@ RUN pip install psycopg2
 RUN echo $PATH
 
 #Start processing
-COPY ./blockchain/ blockchain/
-COPY ./requirements.txt .
-COPY ./setup.py .
+COPY blockchain blockchain/
+COPY requirements.txt .
+COPY setup.py .
 COPY ./blockchain.yml .
-COPY ./pki/ pki/
+COPY pki pki/
 
 ARG BLOCKCHAIN_DB_HOSTNAME
 ARG BLOCKCHAIN_DB_NAME
@@ -72,4 +72,4 @@ ARG BLOCKCHAIN_DB_PORT
 
 RUN pip install -r requirements.txt
 RUN chmod a+x blockchain/processing.py
-ENTRYPOINT ["python", "blockchain/processing.py --private-key pki/private-key.pem --public-key pki/public-key.pem --port 8080 --phase 1"]
+ENTRYPOINT ["python", "blockchain/processing.py --private-key pki/sk.pem --public-key pki/pk.pem --port 8080 --phase 1"]
