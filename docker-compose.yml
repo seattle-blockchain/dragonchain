@@ -1,18 +1,22 @@
 version: '2'
 services:
   db:
+    container_name: dragonchain_db
     build:
       context: .
       dockerfile: Postgres_Database_Dockerfile
   processor:
+    container_name: dragonchain_processor
     build:
       context: .
       dockerfile: Processor_Dockerfile
   web_query:
+    container_name: dragonchain_web_query
     build:
       context: .
       dockerfile: Web_Query_Dockerfile
   web_transaction:
+    container_name: dragonchain_web_tx
     build:
       context: .
       dockerfile: Web_Transaction_Dockerfile
