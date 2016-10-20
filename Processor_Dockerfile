@@ -72,4 +72,4 @@ ARG BLOCKCHAIN_DB_PORT
 
 RUN pip install -r requirements.txt
 RUN chmod a+x blockchain/processing.py
-ENTRYPOINT ["python", "blockchain/processing.py --private-key pki/sk.pem --public-key pki/pk.pem --port 8080 --phase 1"]
+ENTRYPOINT ["python", "blockchain/processing.py", "--private-key", "pki/sk.pem", "--public-key", "pki/pk.pem",  "--port", "8080", "--phase", "1"]

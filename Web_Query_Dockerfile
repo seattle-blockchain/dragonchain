@@ -21,5 +21,5 @@ RUN chmod a+x blockchain/query_svc.py
 RUN chmod a+x web_query_entrypoint.sh
 RUN yum install openssh -y
 
-ENTRYPOINT ["/bin/bash", "python /blockchain/query_svc.py --private-key /pki/sk.pem --public-key ./pki/pk.pem"]
+ENTRYPOINT ["python", "blockchain/query_svc.py", "--private-key", "pki/sk.pem", "--public-key", "pki/pk.pem"]
 CMD ["/bin/bash", "web_query_entrypoint.sh"]
