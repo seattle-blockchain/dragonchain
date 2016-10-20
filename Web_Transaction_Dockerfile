@@ -15,10 +15,10 @@ RUN echo $PATH
 
 COPY ./blockchain .
 # COPY ./pki .
-RUN mkdir pki
+# RUN mkdir pki
 RUN mkdir blockchain
-RUN openssl ecparam -name secp384r1 -genkey -out /pki/sk.pem
-RUN openssl ec -in /pki/sk.pem -pubout -out /pki/pk.pem
+# RUN openssl ecparam -name secp384r1 -genkey -out /pki/sk.pem
+# RUN openssl ec -in /pki/sk.pem -pubout -out /pki/pk.pem
 COPY ./requirements.txt .
 
 RUN pip install -r requirements.txt
